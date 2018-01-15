@@ -2,25 +2,25 @@
 
 {% block content %}
 
-<h1>{{posts[0].title}}</h1>
+<h1>View Single Post</h1>
     <hr />
         <ul>
-            {% for post in posts %}
             <p>
-            <h2>
-            <a href="/post/{{post.id}}"> {{post.title}}</a> 
-            </h2>
-            <hr />
-            <li>{{post.body}}</li>
-            <hr />
+                <h2>
+                    <a href="/post/{{posts.id}}"> {{posts.title}}</a> 
+                </h2>
+                    <li>{{posts.body}}</li>
+                    
+                    <p class="post_author">
+                    Written by <a href='/singleUser/{{posts.owner.id}}'> {{posts.owner.email.split(sep='@')[0]}}
+                    </a>
+                    </p>
+                <hr />
             </p>
-            {% endfor %}
         </ul>
-
-<nav>
-    <a href="/post/{{posts[0].id-1}}">Previous</a> |
-    <a href="/blog">All</a> |
-    <a href="/post/{{posts[0].id+1}}">Next</a> |
-</nav> 
+        <nav>
+            <a href="/post/{{posts.id-1}}">Previous</a> |
+            <a href="/post/{{posts.id+1}}">Next</a> |
+        </nav> 
 
 {% endblock %}

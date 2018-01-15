@@ -1,16 +1,91 @@
 <!doctype html>
 <html>
-    <nav>
-            <a href="/blog">Blog</a> |
-            <a href="/newpost">New Post</a> |
-            </nav> 
     <head>
-        <title>{{title}}</title>
+        <style type = "text/css">
+            head{
+            background-color: lightblue;
+            }
+            body{
+            background-image: url(https://pbs.twimg.com/profile_images/503950005028147201/u9CwXRoO.jpeg);
+            background-repeat: no-repeat;
+            background-position: right top;
+            margin-right: 50px;
+            }
+        </style>
+
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+    
+        <style>
+            .error {
+                color: red;
+                font-size: larger;
+            }
+        </style>
+        
+        <style>
+            .normal {
+                color: blue;
+                font-size: larger;
+            }
+        </style>
+        
+        <style>
+            .post_author {
+                font-style: italic;
+                font-size: smaller;
+                color: blue;
+            }
+        </style>
+        
+        <style>
+            .post_title {
+                font-style: x-large;
+                font-size: 18px;
+                color: black;
+                }
+        </style>
+        
+        <style>
+            textarea {
+                color: black;
+                font-size: large;
+                width: 400px;
+                height: 300px;
+            }
+        </style>
+
+    
     </head>
-<body>
 
-    {% block content %}
-    {% endblock %}
+    <nav>
+        <style>
+            nav {
+                background-color: lightblue;
+            }
+        </style>
+        <div>
+        <a href="/home">Blogz</a> |
+        <a href="/blog">All Blog Posts</a> |
+        <a href="/singleUser">My Posts</a> |
+        <a href="/newpost">New Post</a> |
+        <a href="/logout">log out</a>
+        </div>
+    </nav> 
 
-</body>
+    
+    <body>
+        
+        {% block content %}
+        {% endblock %}
+        
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{category}}">{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}
+        <br>
+        
+    </body>
 </html>

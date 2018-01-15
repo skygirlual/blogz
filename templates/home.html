@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Home: Blog User Directory</h1>
+    <hr />
+    <ul>
+        <p>
+            {% for author in authors %}
+                <a href="/singleUser/{{author.id}}"> {{author.email.split(sep='@')[0]}}</a> 
+                <br>
+            {% endfor %}
+        </p>
+    </ul>
+{% endblock %}

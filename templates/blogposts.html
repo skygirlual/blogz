@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>My Fantastic Blog</h1>
-
+    <h1>All Blog Posts</h1>
     <hr />
 
     {% if posts|length == 0 %}
@@ -10,14 +9,17 @@
     {% else %}
       
         <ul>
-            {% for post in posts %}
             <p>
-            <h2>
-            <a href="/post/{{post.id}}"> {{post.title}}</a> 
-            </h2>
-            <hr />
-            <li>{{post.body}}</li>
-            <hr />
+            {% for post in posts %}
+               <h2>
+                    <a href="/post/{{post.id}}"> {{post.title}}</a> 
+                    </h2>
+                    <li>{{post.body}}</li>
+                     
+                    <p class="post_author">
+                    Written by <a href='/singleUser/{{post.owner.id}}'>{{post.owner.email.split(sep='@')[0]}}</a>
+                    </p>
+                <hr />
             </p>
             {% endfor %}
         </ul>
@@ -26,5 +28,4 @@
 
     <hr />
 
-
-{% endblock %}
+    {% endblock %}
